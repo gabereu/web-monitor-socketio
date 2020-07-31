@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 
 import { MonitorContext } from './MonitorContext'
+import { MainGrid } from './styles'
 
 import Connected from '../Connected'
+import Messages from '../Messages'
 
 import { Monitor } from '../../utils/Monitor'
 
@@ -18,7 +20,16 @@ export default function Main() {
 
     return (
         <MonitorContext.Provider value={monitor}>
-            <Connected />
+            <MainGrid>
+                <Connected />
+                <Messages />
+                <div
+                    style={{
+                        gridArea: 'unknow',
+                        backgroundColor: 'var(--background)',
+                    }}
+                ></div>
+            </MainGrid>
         </MonitorContext.Provider>
     )
 }

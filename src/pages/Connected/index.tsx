@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 
-import { Wrapper, Connection } from './styles';
+import { Wrapper, Connection } from './styles'
 
-import { MonitorContext } from '../Main/MonitorContext';
+import { MonitorContext } from '../Main/MonitorContext'
 import { Emitted, Received } from '../../utils/Monitor'
 
 export default function Connected() {
@@ -49,8 +49,9 @@ export default function Connected() {
 
     return (
         <Wrapper>
+            <h2>Connections</h2>
             {connections.map((connection, key)=><Connection key={key}>
-                {connection.id} {Monitor.socket.id.split('#')[1] === connection.id ? ': Me': ''}
+                <h2 className='title'>Socket id: {connection.id} {Monitor.socket.id.split('#')[1] === connection.id ? ': Me': ''}</h2>
                 <div>
                     namespace: {connection.namespace}
                 </div>
