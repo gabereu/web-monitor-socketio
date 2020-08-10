@@ -8,6 +8,8 @@ import Messages from '../Messages'
 
 import { Monitor } from '../../utils/Monitor'
 
+import Header from '../../components/Header'
+
 export default function Main() {
 
     const [monitor, setMonitor] = useState(undefined as unknown as Monitor);
@@ -20,16 +22,17 @@ export default function Main() {
 
     return (
         <MonitorContext.Provider value={monitor}>
-            <MainGrid>
-                <Connected />
-                <Messages />
-                <div
-                    style={{
-                        gridArea: 'unknow',
-                        backgroundColor: 'var(--background)',
-                    }}
-                ></div>
-            </MainGrid>
+                <MainGrid>
+                    <Header />
+                    <Connected />
+                    <Messages />
+                    <div
+                        style={{
+                            gridArea: 'unknow',
+                            backgroundColor: 'var(--background)',
+                        }}
+                    ></div>
+                </MainGrid>
         </MonitorContext.Provider>
     )
 }

@@ -2,13 +2,13 @@ import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
     :root{
-        --color: rgb(200,200,200);
-        --background: #322f3d;
+        --color: ${({theme})=>theme.name === 'dark'? '#abadb8' : '#757575' };
+        --background: ${({theme})=>theme.name === 'dark'? '#1f2129' : '#f7f8ff' };
         --background-lighter: #4b5d67;
         
         --message-Emitted: #4b5d67;
-        --message-Received: #59405c;
-        --message-Monitoremitted: #87556f;
+        --message-Received: #ae77b5;
+        --message-Monitoremitted: #2ee69c;
 
         --color-1: #4b5d67;
         --color-2: #322f3d;

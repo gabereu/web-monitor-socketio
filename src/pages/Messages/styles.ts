@@ -19,7 +19,9 @@ interface TitleProps {
 
 export const MessageContainer = styled.div<TitleProps>`
     padding: 10px 5px;
-    background-color: ${({type})=>`var(--message-${type})`};
+    background-color: var(--background);
+    /* background-color: ${({type})=>`var(--message-${type})`}; */
+    border: 2px solid ${({type})=>`var(--message-${type})`};
     border-radius: 5px;
     font-size: 1.3rem;
     margin: 10px 0;

@@ -14,8 +14,8 @@ export const Connection = styled.div`
     padding: 7px 5px;
     font-size: 1.3rem;
     margin: 10px 0;
-    background-color: var(--color-1);
-    border: 2px solid var(--color-1);
+    background-color: var(--background);
+    border: 2px solid var(--color);
     border-radius: 5px;
     .title{
         font-size: 1.4rem;
