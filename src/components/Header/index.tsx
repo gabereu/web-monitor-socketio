@@ -4,6 +4,7 @@ import { RiSunLine } from "react-icons/ri";
 import { useTheme } from 'styled-components'
 
 import { Header as HeaderStyled } from './styles'
+import GetServer from './GetServer'
 
 function Header() {
 
@@ -19,6 +20,7 @@ function Header() {
     return (
         <HeaderStyled>
             <h1>Monitor Socket.IO</h1>
+            <GetServer />
             { theme.name === 'dark'?
                 <RiSunLine onClick={changeToLight} />
                 :

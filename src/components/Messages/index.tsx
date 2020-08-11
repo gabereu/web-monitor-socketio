@@ -1,20 +1,21 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { GrClearOption } from "react-icons/gr"
 
 import { Wrapper, MessageContainer } from './styles'
 
-import { MonitorContext } from '../Main/MonitorContext'
+import { MonitorContext } from '../../contexts/MonitorContext'
 import { Emitted, Received, Monitoremitted, MessageType, Message } from '../../utils/Monitor'
 
 export default function MessagesComponent() {
 
-    const Monitor = useContext(MonitorContext)
+    const { Monitor } = useContext(MonitorContext)
 
     const [messages, setMessages] = useState([] as Message[]);
 
     useEffect(() => {
         if(Monitor){
             Monitor.on(MessageType.Emitted, (emitted: Emitted) => {
-                console.log('Emitted', emitted)
+                // console.log('Emitted', emitted)
                 setMessages(messages => {
                     messages.push({
                         type: MessageType.Emitted,
@@ -26,7 +27,7 @@ export default function MessagesComponent() {
                 })
             });
             Monitor.on(MessageType.Received, (received: Received) => {
-                console.log('Received', received)
+                // console.log('Received', received)
                 setMessages(messages => {
                     messages.push({
                         type: MessageType.Received,
@@ -38,7 +39,7 @@ export default function MessagesComponent() {
                 })
             });
             Monitor.on(MessageType.Monitoremitted, (emitted: Monitoremitted) => {
-                console.log('Monitoremitted', emitted)
+                // console.log('Monitoremitted', emitted)
                 setMessages(messages => {
                     messages.push({
                         type: MessageType.Monitoremitted,
@@ -51,9 +52,18 @@ export default function MessagesComponent() {
         }
     }, [Monitor])
 
+    function resetMessages() {
+        setMessages([]);
+    }
+
     return (
         <Wrapper>
-            <h2>Messages:</h2>
+            <div className='title'>
+            <h2>Messages</h2>
+            <button onClick={resetMessages}>
+                <GrClearOption style={{stroke: 'currentcolor'}} />
+            </button>
+            </div>
             { messages.map((message, index)=>
                 <MessageContainer key={index} type={message.type}>
                     <h1 className='type'>

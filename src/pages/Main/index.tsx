@@ -1,27 +1,25 @@
 import React, { useState, useEffect } from 'react'
 
-import { MonitorContext } from './MonitorContext'
+import { MonitorContext } from '../../contexts/MonitorContext'
 import { MainGrid } from './styles'
 
-import Connected from '../Connected'
-import Messages from '../Messages'
+import Connected from '../../components/Connected'
+import Messages from '../../components/Messages'
+import Header from '../../components/Header'
 
 import { Monitor } from '../../utils/Monitor'
-
-import Header from '../../components/Header'
 
 export default function Main() {
 
     const [monitor, setMonitor] = useState(undefined as unknown as Monitor);
 
-    useEffect(() => {
-        // const url = prompt('server ulr');
-        // if(!url) return;
-        setMonitor(new Monitor('ws://localhost:3333/monitor'));
-    }, []);
+    function changeServer(serverAddress: string) {
+        monitor?.socket.disconnect()
+        setMonitor(new Monitor(serverAddress + '/monitor'))
+    }
 
     return (
-        <MonitorContext.Provider value={monitor}>
+        <MonitorContext.Provider value={{Monitor: monitor, changeServer}}>
                 <MainGrid>
                     <Header />
                     <Connected />

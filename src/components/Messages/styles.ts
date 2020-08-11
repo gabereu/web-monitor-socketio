@@ -11,6 +11,29 @@ export const Wrapper = styled.div`
     border: 1px solid var(--color);
     border-top: none;
     border-bottom: none;
+    .title{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        button{
+            padding: 5px;
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            border-radius: 8px;
+            color: var(--color);
+            background: var(--background);
+            border: 1px solid var(--color);
+            svg path{
+                stroke: currentColor;
+            }
+        }
+    }
 `;
 
 interface TitleProps {

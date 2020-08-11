@@ -26,6 +26,9 @@ export const Wrapper = styled.div`
             color: var(--color);
             background: var(--background);
             border: 1px solid var(--color);
+            svg{
+                stroke: currentColor;
+            }
         }
     }
 `;
