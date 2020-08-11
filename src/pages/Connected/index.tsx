@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { AiOutlineReload } from "react-icons/ai"
 
 import { Wrapper, Connection } from './styles'
 
@@ -45,11 +46,22 @@ export default function Connected() {
                 console.log(sockets)
             });
         }
-    }, [Monitor])
+    }, [Monitor]);
+
+    function reloadConnections() {
+        Monitor.socket.emit('getSockets', '/', (sockets: Array<any>)=>{
+            setConnections(sockets);
+        });
+    }
 
     return (
         <Wrapper>
+            <div className='title'>
             <h2>Connections</h2>
+            <button onClick={reloadConnections}>
+                <AiOutlineReload />
+            </button>
+            </div>
             {connections.map((connection, key)=><Connection key={key}>
                 <h2 className='title'>Socket id: {connection.id} {Monitor.socket.id.split('#')[1] === connection.id ? ': Me': ''}</h2>
                 <div>
