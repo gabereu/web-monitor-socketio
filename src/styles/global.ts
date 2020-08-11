@@ -20,5 +20,6 @@ export const GlobalStyle = createGlobalStyle`
     }
     html,body{
         font-size: 16px;
+        width: 100vw;
     }
 `;
